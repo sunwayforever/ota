@@ -12,8 +12,8 @@
 
 <% @cellulars.each do |cellular| %>
   <tr>
-    <td><%= cellular.product_id %></td>
-    <td><%= cellular.version_id %></td>
+    <td><%= cellular.product.vender %></td>
+    <td><%= cellular.version.version%></td>
     <td><%= cellular.jid %></td>
     <td><%= link_to 'Show', cellular %></td>
     <td><%= link_to 'Edit', edit_cellular_path(cellular) %></td>
