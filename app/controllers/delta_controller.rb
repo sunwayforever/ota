@@ -1,4 +1,13 @@
 class DeltaController < ApplicationController
+
+  def get
+    deltum = Deltum.find_by_id(params[:id])
+    if deltum==nil then
+      render :json=>{:error=>"-1"}, :status=>:failed
+      return
+    end
+    send_file deltum.path
+  end
   # GET /delta
   # GET /delta.json
   def index

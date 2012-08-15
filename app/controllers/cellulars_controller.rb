@@ -1,4 +1,19 @@
 class CellularsController < ApplicationController
+  # GET /cellulars/:jid/query
+  def get
+    cellular = Cellular.find_by_jid(params[:jid])
+    if cellular==nil then
+      render :json=>{:error=>"-1"}, :status=>:failed
+      return
+    end
+
+    deltum=Deltum.find_all_by_a_version_id_and_product_id(cellular.version,cellular.product).last
+    if deltum==nil then
+      render :json=>{:error=>"-2"},:status=>:failed
+      return
+    end
+    render :json=>deltum.to_json (:include=>[:b_version,:a_version,:product])
+  end
   # GET /cellulars
   # GET /cellulars.json
   def index

@@ -1,11 +1,13 @@
 Ota::Application.routes.draw do
   resources :products
 
+  match 'delta/:id/get', :to => 'delta#get'
   resources :delta
 
   resources :versions
 
-  resources :cellulars
+  match 'cellulars/:jid/get', :to => 'cellulars#get'
+  resources :cellulars 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -56,7 +58,7 @@ Ota::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'delta#index'
 
   # See how all your routes lay out with "rake routes"
 

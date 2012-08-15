@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :a_version_id %><br />
-    <%= f.number_field :a_version_id %>
+    <%= f.text_field :a_version_str %>
   </div>
   <div class="field">
     <%= f.label :b_version_id %><br />
-    <%= f.number_field :b_version_id %>
+    <%= f.text_field :b_version_str %>
   </div>
   <div class="field">
     <%= f.label :size %><br />
-    <%= f.number_field :size %>
+    <%= f.text_field :size %>
   </div>
   <div class="field">
     <%= f.label :path %><br />
@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :product_id %><br />
-    <%= f.number_field :product_id %>
+    <%= f.text_field :vender_str %>
   </div>
   <div class="actions">
     <%= f.submit %>
