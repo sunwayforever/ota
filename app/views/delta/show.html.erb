@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>A version:</b>
+  <%= @deltum.a_version_id %>
+</p>
+
+<p>
+  <b>B version:</b>
+  <%= @deltum.b_version_id %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @deltum.size %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%= @deltum.path %>
+</p>
+
+<p>
+  <b>Product:</b>
+  <%= @deltum.product_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_deltum_path(@deltum) %> |
+<%= link_to 'Back', delta_path %>

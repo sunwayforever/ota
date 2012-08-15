@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  model_id: 1
+  version_id: 1
+  jid: MyString
+
+two:
+  model_id: 1
+  version_id: 1
+  jid: MyString

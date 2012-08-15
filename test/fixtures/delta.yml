@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  a_version_id: 1
+  b_version_id: 1
+  size: 1
+  path: MyString
+  product_id: 1
+
+two:
+  a_version_id: 1
+  b_version_id: 1
+  size: 1
+  path: MyString
+  product_id: 1

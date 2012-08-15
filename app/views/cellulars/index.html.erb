@@ -1,0 +1,27 @@
+<h1>Listing cellulars</h1>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Version</th>
+    <th>Jid</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cellulars.each do |cellular| %>
+  <tr>
+    <td><%= cellular.product_id %></td>
+    <td><%= cellular.version_id %></td>
+    <td><%= cellular.jid %></td>
+    <td><%= link_to 'Show', cellular %></td>
+    <td><%= link_to 'Edit', edit_cellular_path(cellular) %></td>
+    <td><%= link_to 'Destroy', cellular, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cellular', new_cellular_path %>

@@ -1,0 +1,37 @@
+<%= form_for(@deltum) do |f| %>
+  <% if @deltum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@deltum.errors.count, "error") %> prohibited this deltum from being saved:</h2>
+
+      <ul>
+      <% @deltum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :a_version_id %><br />
+    <%= f.number_field :a_version_id %>
+  </div>
+  <div class="field">
+    <%= f.label :b_version_id %><br />
+    <%= f.number_field :b_version_id %>
+  </div>
+  <div class="field">
+    <%= f.label :size %><br />
+    <%= f.number_field :size %>
+  </div>
+  <div class="field">
+    <%= f.label :path %><br />
+    <%= f.text_field :path %>
+  </div>
+  <div class="field">
+    <%= f.label :product_id %><br />
+    <%= f.number_field :product_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

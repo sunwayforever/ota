@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Product:</b>
+  <%= @cellular.product_id %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%= @cellular.version_id %>
+</p>
+
+<p>
+  <b>Jid:</b>
+  <%= @cellular.jid %>
+</p>
+
+
+<%= link_to 'Edit', edit_cellular_path(@cellular) %> |
+<%= link_to 'Back', cellulars_path %>

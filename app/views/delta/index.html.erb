@@ -1,0 +1,31 @@
+<h1>Listing delta</h1>
+
+<table>
+  <tr>
+    <th>A version</th>
+    <th>B version</th>
+    <th>Size</th>
+    <th>Path</th>
+    <th>Product</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @delta.each do |deltum| %>
+  <tr>
+    <td><%= deltum.a_version_id %></td>
+    <td><%= deltum.b_version_id %></td>
+    <td><%= deltum.size %></td>
+    <td><%= deltum.path %></td>
+    <td><%= deltum.product_id %></td>
+    <td><%= link_to 'Show', deltum %></td>
+    <td><%= link_to 'Edit', edit_deltum_path(deltum) %></td>
+    <td><%= link_to 'Destroy', deltum, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Deltum', new_deltum_path %>

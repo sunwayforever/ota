@@ -1,0 +1,29 @@
+<%= form_for(@cellular) do |f| %>
+  <% if @cellular.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cellular.errors.count, "error") %> prohibited this cellular from being saved:</h2>
+
+      <ul>
+      <% @cellular.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :product_id %><br />
+    <%= f.number_field :product_id %>
+  </div>
+  <div class="field">
+    <%= f.label :version_id %><br />
+    <%= f.number_field :version_id %>
+  </div>
+  <div class="field">
+    <%= f.label :jid %><br />
+    <%= f.text_field :jid %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
