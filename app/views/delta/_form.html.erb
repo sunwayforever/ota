@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :a_version_id %><br />
-    <%= f.text_field :a_version_str %>
+    <%= f.select :a_version_id,Version.all.collect {|v| [v.version,v.id]} %>
   </div>
   <div class="field">
     <%= f.label :b_version_id %><br />
-    <%= f.text_field :b_version_str %>
+    <%= f.select :b_version_id,Version.all.collect {|v| [v.version,v.id]} %>
   </div>
   <div class="field">
     <%= f.label :size %><br />
@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :product_id %><br />
-    <%= f.text_field :vender_str %>
+    <%= f.select :product_id,Product.all.collect {|p| [p.vender,p.id]} %>
   </div>
   <div class="actions">
     <%= f.submit %>
