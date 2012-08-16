@@ -1,4 +1,9 @@
 class CellularsController < ApplicationController
+  def push
+    cellular = Cellular.find(params[:id])
+    render :text=>"cellular "+cellular.jid+" will be pushed with the lastest deltum"
+  end
+
   # GET /cellulars/:jid/query
   def get
     cellular = Cellular.find_by_jid(params[:jid])

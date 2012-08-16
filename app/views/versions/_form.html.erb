@@ -1,29 +1,26 @@
-<%= form_for(@version) do |f| %>
-  <% if @version.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@version.errors.count, "error") %> prohibited this version from being saved:</h2>
-
-      <ul>
-      <% @version.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @version, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date, :class => 'date_select' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :version, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :version, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :release_note, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :release_note, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :version %><br />
-    <%= f.text_field :version %>
-  </div>
-  <div class="field">
-    <%= f.label :release_note %><br />
-    <%= f.text_field :release_note %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                versions_path, :class => 'btn' %>
   </div>
 <% end %>

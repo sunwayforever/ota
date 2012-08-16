@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">OTA Web Console</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "Cellular", cellulars_path %></li>
+	  <li><%= link_to "Version",versions_path %></li>
+          <li><%= link_to "Delta", delta_path%></li>
+          <li><%= link_to "Product",products_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="span12"><%= yield %></div>
+  </div>
 
-<%= yield %>
-
+</div>
 </body>
 </html>

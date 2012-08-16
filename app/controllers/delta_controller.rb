@@ -1,5 +1,10 @@
 class DeltaController < ApplicationController
 
+  def push
+    @deltum = Deltum.find(params[:id])
+    render :text=>"deltum "+@deltum.path+" will be pused"
+  end
+
   def get
     deltum = Deltum.find_by_id(params[:id])
     if deltum==nil then

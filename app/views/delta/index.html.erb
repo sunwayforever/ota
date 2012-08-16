@@ -1,31 +1,49 @@
-<h1>Listing delta</h1>
-
-<table>
-  <tr>
-    <th>A version</th>
-    <th>B version</th>
-    <th>Size</th>
-    <th>Path</th>
-    <th>Product</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @delta.each do |deltum| %>
-  <tr>
-    <td><%= deltum.a_version.version %></td>
-    <td><%= deltum.b_version.version %></td>
-    <td><%= deltum.size %></td>
-    <td><%= deltum.path %></td>
-    <td><%= deltum.product.vender %></td>
-    <td><%= link_to 'Show', deltum %></td>
-    <td><%= link_to 'Edit', edit_deltum_path(deltum) %></td>
-    <td><%= link_to 'Destroy', deltum, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Deltum -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:a_version_id) %></th>
+      <th><%= model_class.human_attribute_name(:b_version_id) %></th>
+      <th><%= model_class.human_attribute_name(:size) %></th>
+      <th><%= model_class.human_attribute_name(:path) %></th>
+      <th><%= model_class.human_attribute_name(:product_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @delta.each do |deltum| %>
+      <tr>
+        <td><%= link_to deltum.id, deltum_path(deltum) %></td>
+        <td><%= deltum.a_version.version %></td>
+        <td><%= deltum.b_version.version %></td>
+        <td><%= deltum.size %></td>
+        <td><%= deltum.path %></td>
+        <td><%= deltum.product.vender %></td>
+        <td><%=l deltum.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_deltum_path(deltum), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      deltum_path(deltum),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+	  <%= link_to "Push",
+              deltum_path(deltum),
+              :method => :post,
+              :confirm => "Are you sure to push the deltum to all the corresponding cellulars?",
+              :class => 'btn btn-mini btn-info' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Deltum', new_deltum_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_deltum_path,
+            :class => 'btn btn-primary' %>

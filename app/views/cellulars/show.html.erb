@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Cellular -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Product:</b>
-  <%= @cellular.product.vender %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:product_id) %>:</strong></dt>
+  <dd><%= @cellular.product.vender %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:version_id) %>:</strong></dt>
+  <dd><%= @cellular.version.version %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:jid) %>:</strong></dt>
+  <dd><%= @cellular.jid %></dd>
+</dl>
 
-<p>
-  <b>Version:</b>
-  <%= @cellular.version.version %>
-</p>
-
-<p>
-  <b>Jid:</b>
-  <%= @cellular.jid %>
-</p>
-
-
-<%= link_to 'Edit', edit_cellular_path(@cellular) %> |
-<%= link_to 'Back', cellulars_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              cellulars_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_cellular_path(@cellular), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              cellular_path(@cellular),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

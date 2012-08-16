@@ -1,6 +1,6 @@
-<h1>Editing cellular</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @cellular %> |
-<%= link_to 'Back', cellulars_path %>
+<%- model_class = Cellular -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
+                                   :default => "Edit #{model_class.model_name.human}") %></h1>
+</div>
+<%= render :partial => 'form' %>

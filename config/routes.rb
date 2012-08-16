@@ -2,11 +2,13 @@ Ota::Application.routes.draw do
   resources :products
 
   match 'delta/:id/get', :to => 'delta#get'
+  match 'delta/:id', :via=>'post',:to => 'delta#push'
   resources :delta
 
   resources :versions
 
   match 'cellulars/:jid/get', :to => 'cellulars#get'
+  match 'cellulars/:id', :via=>'post',:to => 'cellulars#push'
   resources :cellulars 
 
   # The priority is based upon order of creation:
