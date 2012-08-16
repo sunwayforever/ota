@@ -14,11 +14,11 @@
 
 <% @delta.each do |deltum| %>
   <tr>
-    <td><%= deltum.a_version_id %></td>
-    <td><%= deltum.b_version_id %></td>
+    <td><%= deltum.a_version.version %></td>
+    <td><%= deltum.b_version.version %></td>
     <td><%= deltum.size %></td>
     <td><%= deltum.path %></td>
-    <td><%= deltum.product_id %></td>
+    <td><%= deltum.product.vender %></td>
     <td><%= link_to 'Show', deltum %></td>
     <td><%= link_to 'Edit', edit_deltum_path(deltum) %></td>
     <td><%= link_to 'Destroy', deltum, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
