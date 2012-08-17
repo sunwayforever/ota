@@ -1,5 +1,5 @@
 class DeltaController < ApplicationController
-
+  include ApplicationHelper
   def push
     @deltum = Deltum.find(params[:id])
     render :text=>"deltum "+@deltum.path+" will be pused"
@@ -11,7 +11,7 @@ class DeltaController < ApplicationController
       render :json=>{:error=>"-1"}, :status=>:failed
       return
     end
-    send_file deltum.path
+    send_file delta_storage (deltum.path)
   end
   # GET /delta
   # GET /delta.json
