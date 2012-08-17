@@ -23,4 +23,13 @@ class Deltum < ActiveRecord::Base
     path=delta_storage (self.path)
     File.delete path if File.exist? path
   end
+
+  def self.filter (filter_str)
+    ret=Array.new
+    Deltum.all.each do |d|
+      all_data=d.path+"\n"+d.a_version.version+"\n"+d.b_version.version+"\n"+d.product.vender
+      ret << d if all_data.include? filter_str
+    end
+    return ret
+  end
 end

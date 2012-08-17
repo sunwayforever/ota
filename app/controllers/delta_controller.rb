@@ -1,5 +1,14 @@
 class DeltaController < ApplicationController
   include ApplicationHelper
+
+  def filter
+    @filter_str=params[:filter][:filter]
+    @delta=Deltum.filter(@filter_str)
+    respond_to do |format|
+      format.html { render :action=>"index"}
+    end
+  end
+
   def push
     @deltum = Deltum.find(params[:id])
     render :text=>"deltum "+@deltum.path+" will be pused"

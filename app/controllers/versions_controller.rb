@@ -1,4 +1,13 @@
 class VersionsController < ApplicationController
+
+  def filter
+    @filter_str=params[:filter][:filter]
+    @versions=Version.filter(@filter_str)
+    respond_to do |format|
+      format.html { render :action=>"index"}
+    end
+  end
+
   # GET /versions
   # GET /versions.json
   def index

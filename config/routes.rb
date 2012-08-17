@@ -1,10 +1,13 @@
 Ota::Application.routes.draw do
+  match 'products/filter', :to => 'products#filter'
   resources :products
 
+  match 'delta/filter', :to => 'delta#filter'
   match 'delta/:id/get', :to => 'delta#get'
   match 'delta/:id', :via=>'post',:to => 'delta#push'
   resources :delta
 
+  match 'versions/filter', :to => 'versions#filter'
   resources :versions
 
   match 'cellulars/filter', :to => 'cellulars#filter'

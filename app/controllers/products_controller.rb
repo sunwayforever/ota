@@ -1,4 +1,11 @@
 class ProductsController < ApplicationController
+  def filter
+    @filter_str=params[:filter][:filter]
+    @products=Product.filter(@filter_str)
+    respond_to do |format|
+      format.html { render :action=>"index"}
+    end
+  end
   # GET /products
   # GET /products.json
   def index

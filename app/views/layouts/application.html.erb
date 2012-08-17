@@ -17,7 +17,8 @@
 	  <li><%= link_to "Version",versions_path %></li>
           <li><%= link_to "Delta", delta_path%></li>
           <li><%= link_to "Product",products_path %></li>
-	  <%= yield :search %>  
+	  <li><%= form_for :filter, :method=>"get",:html=>{:class=>'navbar-search pull-right'},:url=>{:action=>'filter'} do |f|%>
+	    <%= f.text_field :filter, :class =>'search-query',:value=>@filter_str,:placeholder=>"Search cellulars"%><% end %></li>
         </ul>
       </div>
     </div>
