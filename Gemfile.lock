@@ -118,6 +118,7 @@ GEM
     uglifier (1.2.7)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
+    xmpp4r (0.5)
 
 PLATFORMS
   ruby
@@ -133,3 +134,4 @@ DEPENDENCIES
   thin
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  xmpp4r
