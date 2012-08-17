@@ -44,7 +44,7 @@ class VersionsController < ApplicationController
 
     respond_to do |format|
       if @version.save
-        format.html { redirect_to @version, :notice => 'Version was successfully created.' }
+        format.html { redirect_to :versions, :notice => 'Version was successfully created.' }
         format.json { render :json => @version, :status => :created, :location => @version }
       else
         format.html { render :action => "new" }

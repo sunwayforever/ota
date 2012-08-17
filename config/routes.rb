@@ -7,6 +7,7 @@ Ota::Application.routes.draw do
 
   resources :versions
 
+  match 'cellulars/filter', :to => 'cellulars#filter'
   match 'cellulars/:jid/get', :to => 'cellulars#get'
   match 'cellulars/:id', :via=>'post',:to => 'cellulars#push'
   resources :cellulars 

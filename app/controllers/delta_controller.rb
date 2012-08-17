@@ -58,7 +58,7 @@ class DeltaController < ApplicationController
 
     respond_to do |format|
       if @deltum.save
-        format.html { redirect_to @deltum, :notice => 'Deltum was successfully created.' }
+        format.html { redirect_to :delta, :notice => 'Deltum was successfully created.' }
         format.json { render :json => @deltum, :status => :created, :location => @deltum }
       else
         format.html { render :action => "new" }

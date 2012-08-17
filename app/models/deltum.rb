@@ -12,14 +12,15 @@ class Deltum < ActiveRecord::Base
   before_destroy :remove_deltum
 
   def deltum_file=(file)
-    self.size=1024
     self.path=file.original_filename
     File.open(delta_storage(self.path), "wb") do |f| 
       f.write(file.read)
     end
+    self.size=File.size(delta_storage(self.path))
   end
 
   def remove_deltum
-    File.delete delta_storage (self.path)
+    path=delta_storage (self.path)
+    File.delete path if File.exist? path
   end
 end

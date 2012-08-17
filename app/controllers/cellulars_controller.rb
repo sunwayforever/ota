@@ -1,4 +1,13 @@
 class CellularsController < ApplicationController
+
+  def filter
+    @filter_str=params[:filter][:filter]
+    @cellulars=Cellular.filter(@filter_str)
+    respond_to do |format|
+      format.html { render :action=>"index"}
+    end
+  end
+
   def push
     cellular = Cellular.find(params[:id])
     render :text=>"cellular "+cellular.jid+" will be pushed with the lastest deltum"
@@ -23,7 +32,7 @@ class CellularsController < ApplicationController
   # GET /cellulars.json
   def index
     @cellulars = Cellular.all
-
+    @filter_str=""
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @cellulars }
@@ -64,7 +73,7 @@ class CellularsController < ApplicationController
 
     respond_to do |format|
       if @cellular.save
-        format.html { redirect_to @cellular, :notice => 'Cellular was successfully created.' }
+        format.html { redirect_to :cellulars, :notice => 'Cellular was successfully created.' }
         format.json { render :json => @cellular, :status => :created, :location => @cellular }
       else
         format.html { render :action => "new" }

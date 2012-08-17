@@ -21,7 +21,7 @@
         <td><%= link_to deltum.id, deltum_path(deltum) %></td>
         <td><%= deltum.a_version.version %></td>
         <td><%= deltum.b_version.version %></td>
-        <td><%= deltum.size %></td>
+        <td><%= number_to_human_size deltum.size %></td>
         <td><%= deltum.path %></td>
         <td><%= deltum.product.vender %></td>
         <td><%=l deltum.created_at %></td>
