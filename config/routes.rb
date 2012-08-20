@@ -10,10 +10,11 @@ Ota::Application.routes.draw do
   match 'versions/filter', :to => 'versions#filter'
   resources :versions
 
+  match 'cellulars/register', :via=>'post',:to => 'cellulars#register'
   match 'cellulars/filter', :to => 'cellulars#filter'
-  match 'cellulars/:jid/get', :to => 'cellulars#get'
+  match 'cellulars/query_deltum/:jid', :to => 'cellulars#query_deltum'
   match 'cellulars/:id', :via=>'post',:to => 'cellulars#push'
-  resources :cellulars 
+  resources :cellulars
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,4 +1,20 @@
 class CellularsController < ApplicationController
+  include ApplicationHelper
+  include CellularsHelper
+  def register
+    version_str=params[:version_str]
+    product_str=params[:product_str]
+    jid=params[:jid]
+    ret=Cellular.register(version_str,product_str,jid)
+    if ret==Cellular::REGISTERED then
+      xmpp_handle_register(jid)
+      render :json=>{}
+    elsif ret==Cellular::REGISTER_UPDATED
+      render :json=>{}
+    else
+      render :json=>{ :error=>"-1"},:status=>:failed
+    end
+  end
 
   def filter
     @filter_str=params[:filter][:filter]
@@ -13,8 +29,7 @@ class CellularsController < ApplicationController
     render :text=>"cellular "+cellular.jid+" will be pushed with the lastest deltum"
   end
 
-  # GET /cellulars/:jid/query
-  def get
+  def query_deltum
     cellular = Cellular.find_by_jid(params[:jid])
     if cellular==nil then
       render :json=>{:error=>"-1"}, :status=>:failed
@@ -73,6 +88,7 @@ class CellularsController < ApplicationController
 
     respond_to do |format|
       if @cellular.save
+        xmpp_handle_register(@cellular.jid)
         format.html { redirect_to :cellulars, :notice => 'Cellular was successfully created.' }
         format.json { render :json => @cellular, :status => :created, :location => @cellular }
       else
@@ -103,7 +119,7 @@ class CellularsController < ApplicationController
   def destroy
     @cellular = Cellular.find(params[:id])
     @cellular.destroy
-
+    xmpp_handle_deregister(@cellular.jid)
     respond_to do |format|
       format.html { redirect_to cellulars_url }
       format.json { head :no_content }

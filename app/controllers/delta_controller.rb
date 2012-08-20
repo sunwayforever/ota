@@ -12,7 +12,7 @@ class DeltaController < ApplicationController
 
   def push
     @deltum = Deltum.find(params[:id])
-    count=handle_push @deltum
+    count=xmpp_handle_push @deltum
     render :json=>{:count=>count.to_s}
   end
 
