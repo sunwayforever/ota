@@ -1,4 +1,19 @@
 <%- model_class = Cellular -%>
+<% content_for :script do %>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $("button:contains('Push')").click(function() {
+      button=$(this)
+      button.html("Pushing")
+      $.post($(this).attr("path"), {},function (data, textStatus){
+        button.html("Push");
+        alert("delta has been pushed cellular");
+      }, "json");
+    });
+  });
+  </script>
+<% end %>
+
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
@@ -29,12 +44,9 @@
                       :method => :delete,
                       :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
                       :class => 'btn btn-mini btn-danger' %>
-	  <%= link_to "Push",
-              cellular_path(cellular),
-              :method => :post,
-              :confirm => "Are you sure to push the latest deltum to this  cellular?",
-              :class => 'btn btn-mini btn-info' %>
-        </td>
+	  <button class="btn btn-mini btn-success" 
+                      path=<%= cellular_path(cellular) %>>Push</button>
+	</td>
       </tr>
     <% end %>
   </tbody>

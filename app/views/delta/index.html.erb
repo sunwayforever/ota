@@ -3,10 +3,11 @@
 <% content_for :script do %>
   <script type="text/javascript">
   $(document).ready(function() {
-    $("#push_button").click(function() {
-      $(this).html("pushing");
-      $.post($(this).attr("path"), {},function (data, textStatus){
-        $("#push_button").html("Push");
+    $("button:contains('Push')").click(function() {
+        button=$(this)
+        button.html("Pushing")
+        $.post($(this).attr("path"), {},function (data, textStatus){
+        button.html("Push");
         alert("delta has been pushed to "+data.count+ " cellulars")
       }, "json");
     });

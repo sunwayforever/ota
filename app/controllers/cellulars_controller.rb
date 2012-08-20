@@ -26,7 +26,8 @@ class CellularsController < ApplicationController
 
   def push
     cellular = Cellular.find(params[:id])
-    render :text=>"cellular "+cellular.jid+" will be pushed with the lastest deltum"
+    xmpp_handle_push cellular.jid
+    render :json=>{}
   end
 
   def query_deltum
