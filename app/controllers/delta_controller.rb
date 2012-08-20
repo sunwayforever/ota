@@ -1,6 +1,7 @@
 class DeltaController < ApplicationController
   include ApplicationHelper
-
+  include DeltaHelper
+  
   def filter
     @filter_str=params[:filter][:filter]
     @delta=Deltum.filter(@filter_str)
@@ -11,7 +12,8 @@ class DeltaController < ApplicationController
 
   def push
     @deltum = Deltum.find(params[:id])
-    render :text=>"deltum "+@deltum.path+" will be pused"
+    count=handle_push @deltum
+    render :json=>{:count=>count.to_s}
   end
 
   def get
