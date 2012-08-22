@@ -2,8 +2,8 @@ class CellularsController < ApplicationController
   include ApplicationHelper
   include CellularsHelper
   def register
-    version_str=params[:version_str]
-    product_str=params[:product_str]
+    version_str=params[:version]
+    product_str=params[:product]
     jid=params[:jid]
     ret=Cellular.register(version_str,product_str,jid)
     if ret==Cellular::REGISTERED then
@@ -26,7 +26,12 @@ class CellularsController < ApplicationController
 
   def push
     cellular = Cellular.find(params[:id])
-    xmpp_handle_push cellular.jid
+
+    deltum=Deltum.find_all_by_a_version_id_and_product_id(cellular.version,cellular.product).last
+    if deltum!=nil
+      xmpp_handle_push cellular.jid,deltum
+    end
+
     render :json=>{}
   end
 

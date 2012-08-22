@@ -2,7 +2,7 @@ class Cellular < ActiveRecord::Base
   REGISTER_FAILED=-1
   REGISTER_UPDATED=0
   REGISTERED=1
-  
+
   attr_accessible :jid, :product_id, :version_id, :product,:version
   belongs_to :product
   belongs_to :version
