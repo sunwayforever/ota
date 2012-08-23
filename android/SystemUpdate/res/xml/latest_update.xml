@@ -1,0 +1,43 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+		  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+		  android:title="@string/latest_update">
+
+  <PreferenceCategory
+      android:order="1"
+      android:title="@string/do_update">
+
+    <Preference
+        android:key="do_update"
+        android:title="@string/click_to_upgrade"
+        android:persistent="false"
+        />
+  </PreferenceCategory>
+  <PreferenceCategory
+      android:order="2"
+      android:title="@string/version_info">
+
+  <Preference
+        android:key="lastest_update_version"
+        android:title="@string/version"
+        android:persistent="false"
+        android:order="1"/>
+
+  <Preference
+        android:key="lastest_update_date"
+        android:title="@string/release_date"
+        android:persistent="false"
+        android:order="2"/>
+
+  <Preference
+      android:key="lastest_update_size"
+      android:title="@string/size"
+      android:persistent="false"
+      android:order="3"/>
+
+  <com.sprd.systemupdate.ReleaseNoteDialogPreference
+      android:key="lastest_update_release_note"
+      android:title="@string/release_note"
+      android:persistent="false"
+      android:order="4"/>
+  </PreferenceCategory>
+</PreferenceScreen>

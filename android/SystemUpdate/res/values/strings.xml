@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">System update</string>
+    <string name="check_update">Check for update</string>
+    <string name="click_to_update">Click to check for update</string>
+    <string name="latest_update">Latest update</string>
+    <string name="downloading_update">Downloading update</string>
+    
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">系统更新</string>
+    <string name="check_update">检查更新</string>
+    <string name="checking_update">正在检查...</string>
+    <string name="click_to_update">点击检查更新</string>
+    <string name="latest_update">有可用更新</string>
+    <string name="downloading_update">已下载更新</string>
+    <string name="has_update">检测到更新</string>
+    <string name="no_update">没有更新</string>
+    <string name="check_update_failed">无法检测更新</string>
+    <!-- for latest update -->
+    <string name="do_update">升级到该版本</string>
+    <string name="click_to_upgrade">点击升级</string>
+    <string name="click_to_download">点击下载</string>
+    <string name="version_info">版本信息</string>
+    <string name="version">版本</string>
+    <string name="release_date">发布时间</string>
+    <string name="size">文件大小</string>
+    <string name="release_note">发行注记</string>
+    <string name="downloading">正在下载...</string>
+    <string name="downloaded">下载完成</string>
+</resources>
